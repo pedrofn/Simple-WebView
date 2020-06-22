@@ -13,9 +13,9 @@ function createWindow () {
   })
 
   // and load the index.html of the app.
-  win.loadURL('http://localhost:3000/')
+  win.loadURL('https://localhos:3000/')
 
-  win.webContents.openDevTools()
+  //win.webContents.openDevTools()
 
 }
 
