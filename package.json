@@ -2,13 +2,14 @@
   "name": "simple-web-view",
   "version": "1.0.0",
   "description": "Navegador flutuante com electronJS",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
   "author": "pedrofn",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "electron": "^9.0.4"
   }
 }

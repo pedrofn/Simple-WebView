@@ -1,39 +1,41 @@
-const { app, BowserWindow, BrowserWindow } = require('electron')
+const { app, BrowserWindow } = require('electron')
 
-function createWindow() {
-    // Criar janela do browser 
-const win = new BrowserWindow({
+function createWindow () {
+  // Cria uma janela de navegação.
+  const win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-        nodeIntegration: true 
+      nodeIntegration: true
     }
-})
+  })
 
-// Carregar o index.html do app 
-win.loadfile('index.html')
+  // and load the index.html of the app.
+  win.loadFile('index.html')
 
-//Abrir o DevTools
-win.webContents.openDevTools()
-
+  // Open the DevTools.
+  win.webContents.openDevTools()
 }
 
-// Este metodod sera chamado quando o electron tiver finalizado
-// Inicializado eh pronto para criar as janelas do browser
-// Algumas APIs so podem ser usadas antes deste evento ocorrer 
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+// Algumas APIs podem ser usadas somente depois que este evento ocorre.
 app.whenReady().then(createWindow)
 
-// Sair quando todas as janelas tiver sido fechadas 
+// Quit when all windows are closed.
 app.on('window-all-closed', () => {
-    if (process.plataform !== 'darwin') {
-        app.quit()
-    }
+  // No macOS é comum para aplicativos e sua barra de menu 
+  // permaneçam ativo até que o usuário explicitamente encerre com Cmd + Q
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
 })
 
 app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-        createWindow()
-    }
+  // On macOS it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow()
+  }
 })
-
 
