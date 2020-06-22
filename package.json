@@ -4,8 +4,11 @@
   "description": "Navegador flutuante com electronJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron ."
   },
   "author": "pedrofn",
-  "license": "MIT"
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^9.0.4"
+  }
 }
